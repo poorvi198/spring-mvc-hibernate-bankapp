@@ -11,7 +11,6 @@ public class Branch {
 
     @Id
     @Column(name = "code")
-    @Size(max = 999999999)
     private String branchCode;
 
     @Embedded

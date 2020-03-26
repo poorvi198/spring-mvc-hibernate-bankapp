@@ -1,33 +1,34 @@
 package org.bankapp.controller;
 
-import org.bankapp.dao.BankAppDao;
+import org.bankapp.dao.BranchDao;
+import org.bankapp.dao.CustomerDao;
 import org.bankapp.entity.Branch;
 import org.bankapp.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/branch")
 public class BranchController {
 
     @Autowired
-    BankAppDao dao;
+    BranchDao dao;
 
-    @PostMapping("/branch")
+    @PostMapping("/")
     public Branch addBranch(@RequestBody Branch branch)
     {
         return dao.createBranch(branch) ;
     }
 
-    @GetMapping(value = "/branch/{branchCode}")
+    @GetMapping(value = "/{branchCode}")
     public List<Customer> getAllCustomers(@PathVariable String branchCode)
     {
         return dao.getAllCustomers(branchCode);
     }
 
-    @DeleteMapping(value = "/branch/{branchCode}")
+    @DeleteMapping(value = "/{branchCode}")
     public void deleteBranch(@PathVariable String branchCode){
         dao.deleteBranch(branchCode);
     }

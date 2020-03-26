@@ -1,7 +1,6 @@
 package org.bankapp.entity;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "account")
