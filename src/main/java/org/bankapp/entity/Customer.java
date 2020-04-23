@@ -1,5 +1,7 @@
 package org.bankapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @JsonIgnore
     public int id;
 
     @Column(name = "name")
@@ -17,6 +20,7 @@ public class Customer {
     @Column(name = "userName")
     public String username;
 
+    @JsonIgnore
     @Column(name = "password")
     public String password;
 
@@ -25,10 +29,12 @@ public class Customer {
 
     @ManyToOne
     @JoinColumn(name = "branch_code")
+    @JsonIgnore
     public Branch branch;
 
     @OneToOne(cascade = CascadeType.ALL,
     mappedBy = "customer")
+    @JsonIgnore
     public Account account;
 
     public Customer() {

@@ -37,7 +37,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Session session =sessionFactory.getCurrentSession();
         Account account = session.get(Account.class,accNo);
         Customer customer = account.getCustomer();
-        return new Customer(customer.getName(),customer.getUsername(),customer.getPassword(),customer.getContact());
+        return customer;
     }
 
     @Override
@@ -52,8 +52,8 @@ public class CustomerDaoImpl implements CustomerDao {
         query.setParameter("contact",customer.getContact());
         query.setParameter("id",id);
         query.executeUpdate();
-        Customer customer1 = session.get(Customer.class,id);
-        return new Customer(customer1.getName(),customer1.getUsername(),customer1.getPassword(),customer1.getContact());
+        Customer updatedCustomer = session.get(Customer.class,id);
+        return updatedCustomer;
     }
 
     @Override

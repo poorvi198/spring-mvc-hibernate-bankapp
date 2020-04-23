@@ -51,7 +51,7 @@ public class AccountDaoImpl implements AccountDao {
         Session session = sessionFactory.getCurrentSession();
         Customer customer = session.get(Customer.class,customerId);
         Account account = customer.getAccount();
-        return new Account(account.getAccountNo(),account.getBalance());
+        return account;
     }
 
     @Override

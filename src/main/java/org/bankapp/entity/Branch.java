@@ -69,7 +69,6 @@ public class Branch {
         return "Branch{" +
                 "branchCode='" + branchCode + '\'' +
                 ", address=" + address +
-                ", customers=" + customers +
                 '}';
     }
 }

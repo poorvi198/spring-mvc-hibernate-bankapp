@@ -37,9 +37,9 @@ public class BranchDaoImpl  implements  BranchDao{
     @Transactional
     public List<Customer> getAllCustomers(String branchCode) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Branch ");
+        Query query = session.createQuery("from Branch where branchCode = :branchCode");
+        query.setParameter("branchCode",branchCode);
         List<Customer> customers = query.list();
-        System.out.println(customers);
         return customers;
     }
 
